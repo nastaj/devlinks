@@ -7,7 +7,7 @@ function Option({ option, close, onSelected, selected }) {
   }
 
   return (
-    <div
+    <li
       className={`flex cursor-pointer items-center gap-3 pb-3 pt-3 first:pt-0 last:pb-0 hover:text-brand-purple--hover  ${
         isSelected ? "text-brand-purple" : ""
       }`}
@@ -17,7 +17,7 @@ function Option({ option, close, onSelected, selected }) {
       <span>
         {option.label} {isSelected && "(Selected)"}
       </span>
-    </div>
+    </li>
   );
 }
 

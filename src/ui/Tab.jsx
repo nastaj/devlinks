@@ -2,8 +2,15 @@ import { NavLink } from "react-router-dom";
 
 function Tab({ type = "primary", to }) {
   return (
-    <div className="flex rounded-lg bg-brand-purple--light px-4 py-2">
-      <NavLink to={to}>
+    <NavLink
+      to={to}
+      className={`flex rounded-lg px-6 py-2 ${
+        type === "secondary"
+          ? "border border-brand-purple px-[0.85rem] py-2"
+          : ""
+      }`}
+    >
+      <>
         {to === "editor" && (
           <img src="icon-link.svg" alt="Link icon" className="h-6 w-6" />
         )}
@@ -21,8 +28,8 @@ function Tab({ type = "primary", to }) {
             className="h-6 w-6"
           />
         )}
-      </NavLink>
-    </div>
+      </>
+    </NavLink>
   );
 }
 

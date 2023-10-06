@@ -3,7 +3,7 @@ import Tab from "./Tab";
 function Nav() {
   return (
     <nav className="flex items-center">
-      <ul className="flex items-center gap-12">
+      <ul className="flex items-center gap-2">
         <li>
           <Tab to="editor" />
         </li>

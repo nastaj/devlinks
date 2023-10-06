@@ -7,11 +7,7 @@ function Editor() {
   return (
     <div className="px-12">
       <p>Links editor</p>
-      {/* <Input placeholder="Text field empty" icon={"icon-link.svg"} /> */}
-      {/* <Select options={linkOptions} /> */}
-      <Button variation="primary" disabled={true} />
-      <div className="mb-6"></div>
-      <Button variation="secondary" disabled={true} />
+      <Select options={linkOptions} />
     </div>
   );
 }

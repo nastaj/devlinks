@@ -21,7 +21,7 @@ function Select({ options }) {
         />
         <div
           className={`w-full cursor-pointer rounded-lg border border-borders bg-white p-3 pl-10 ${
-            isOpen ? "drop-shadow-3xl border-brand-purple" : ""
+            isOpen ? "border-brand-purple drop-shadow-3xl" : ""
           }`}
         >
           {selected.label}
