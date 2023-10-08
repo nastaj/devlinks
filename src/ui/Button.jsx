@@ -1,4 +1,4 @@
-function Button({ variation, onClick, disabled, children }) {
+function Button({ variation = "primary", onClick, disabled, children }) {
   const btnStyles = {
     primary: `bg-brand-purple text-white hover:bg-brand-purple--hover ${
       disabled ? "bg-brand-purple--hover" : ""
