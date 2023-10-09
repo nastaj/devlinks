@@ -12,20 +12,20 @@ function Tab({ type = "primary", to }) {
     >
       <>
         {to === "editor" && (
-          <img src="icon-link.svg" alt="Link icon" className="h-6 w-6" />
+          <img src="icon-link.svg" alt="Link icon" className="h-5 w-5" />
         )}
         {to === "profile" && (
           <img
             src="icon-profile-details-header.svg"
             alt="Profile icon"
-            className="h-6 w-6"
+            className="h-5 w-5"
           />
         )}
         {to === "preview" && (
           <img
             src="icon-preview-header.svg"
             alt="Header icon"
-            className="h-6 w-6"
+            className="h-5 w-5"
           />
         )}
       </>

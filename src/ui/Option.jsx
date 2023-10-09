@@ -1,8 +1,17 @@
-function Option({ option, close, onSelected, selected }) {
+import { useForms } from "../context/FormsContext";
+
+function Option({ option, close, onSelected, selected, id }) {
   const isSelected = option.value === selected.value;
+
+  const { setForms } = useForms();
 
   function handleClick() {
     onSelected(option);
+    setForms((forms) =>
+      forms.map((form) =>
+        form.id === id ? { ...form, platform: option.value } : form,
+      ),
+    );
     close();
   }
 

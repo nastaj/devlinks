@@ -5,7 +5,10 @@ function AppLayout() {
   return (
     <div className="h-screen bg-grey-light">
       <Header />
-      <Outlet />
+
+      <main className="m-4 rounded-xl bg-white">
+        <Outlet />
+      </main>
     </div>
   );
 }

@@ -1,14 +1,17 @@
-import Button from "../ui/Button";
-import Input from "../ui/Input";
-import Select from "../ui/Select";
-import { linkOptions } from "../utils/constants";
+import LinkList from "../features/editor/LinkList";
+import AddNewLink from "../features/editor/AddNewLink";
+import { FormsProvider } from "../context/FormsContext";
+import SaveButton from "../features/editor/SaveButton";
 
 function Editor() {
   return (
-    <div className="px-12">
-      <p>Links editor</p>
-      <Select options={linkOptions} />
-    </div>
+    <FormsProvider>
+      <form className="flex flex-col gap-6 p-6">
+        <AddNewLink />
+        <LinkList />
+        <SaveButton />
+      </form>
+    </FormsProvider>
   );
 }
 

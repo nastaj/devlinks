@@ -1,3 +1,5 @@
+import { useForms } from "../context/FormsContext";
+
 function Input({
   icon,
   disabled = false,
@@ -8,6 +10,7 @@ function Input({
   name,
   validationSchema,
   label,
+  id,
 }) {
   return (
     <div>
@@ -17,7 +20,7 @@ function Input({
       <div className="relative flex">
         {icon && (
           <img
-            className="absolute left-3 top-1/2 z-50 -translate-y-1/2"
+            className="absolute left-3 top-1/2 z-40 -translate-y-1/2"
             src={icon}
             alt={placeholder}
           />
