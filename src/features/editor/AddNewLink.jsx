@@ -12,12 +12,11 @@ function AddNewLink() {
       id: Math.round(Math.random() * 1000),
       platform: linkOptions[0].value,
       link: "",
+      creating: true,
     };
 
     setForms((forms) => [...forms, newForm]);
   }
-
-  console.log(forms);
 
   return (
     <div>

@@ -12,7 +12,7 @@ function LinkList() {
   if (!forms || !links.length) return <EmptyLinkList />;
 
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-6 overflow-auto">
       {forms.map((form, index) => (
         <LinkForm key={form.id} form={form} index={index} />
       ))}

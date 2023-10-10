@@ -20,7 +20,9 @@ function LinkForm({ form, index }) {
     },
   });
 
-  function handleDelete() {
+  function handleDelete(e) {
+    e.preventDefault();
+
     deleteLink(id);
   }
 

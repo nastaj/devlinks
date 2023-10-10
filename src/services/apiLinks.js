@@ -29,14 +29,37 @@ export async function addUpdateLinks(forms) {
   const { id: userId } = await getCurrentUser();
 
   // 2. Determine if user updates or adds a new link
-  const query = supabase.from("links");
+  // Use Promise.all to await all async operations inside map
+  const results = await Promise.all(
+    forms.map(async (form) => {
+      // Adding
+      if (form.creating) {
+        const { error } = await supabase
+          .from("links")
+          .insert([
+            { userId: userId, platform: form.platform, link: form.link },
+          ])
+          .select();
 
-  forms.map((form) => {});
+        if (error) throw new Error(error.message);
 
-  //
-  const { data, error } = await query;
+        return null;
+      }
 
-  if (error) throw new Error(error.message);
+      // Updating
+      if (!form.creating) {
+        const { error } = await supabase
+          .from("links")
+          .update({ platform: form.platform, link: form.link })
+          .eq("id", form.id)
+          .select();
 
-  return data;
+        if (error) throw new Error(error.message);
+
+        return null;
+      }
+    }),
+  );
+
+  return results; // Return the results of all async operations
 }
