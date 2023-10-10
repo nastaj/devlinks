@@ -5,11 +5,10 @@ import { useForms } from "../../context/FormsContext";
 import Spinner from "../../ui/Spinner";
 
 function LinkList() {
-  const { isLoadingLinks, links, forms } = useForms();
+  const { isLoadingLinks, forms = [] } = useForms();
 
   if (isLoadingLinks) return <Spinner />;
-
-  if (!forms || !links.length) return <EmptyLinkList />;
+  if (!forms.length) return <EmptyLinkList />;
 
   return (
     <ul className="flex flex-col gap-6 overflow-auto">

@@ -6,11 +6,11 @@ import SaveButton from "../features/editor/SaveButton";
 function Editor() {
   return (
     <FormsProvider>
-      <form className="flex flex-col gap-6 p-6">
+      <div className="flex flex-col gap-6 p-6">
         <AddNewLink />
         <LinkList />
         <SaveButton />
-      </form>
+      </div>
     </FormsProvider>
   );
 }

@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
 import Input from "../../ui/Input";
 import Select from "../../ui/Select";
-import { linkOptions } from "../../utils/constants";
+import { inputSettings, linkOptions } from "../../utils/constants";
 import useDeleteLink from "./useDeleteLink";
 import { useForms } from "../../context/FormsContext";
 
 function LinkForm({ form, index }) {
-  form;
   const { id, platform, link: url } = form;
   const { setForms } = useForms();
   const { deleteLink, isDeleting } = useDeleteLink();
@@ -20,9 +19,15 @@ function LinkForm({ form, index }) {
     },
   });
 
+  const inputSetting = inputSettings.find(
+    (setting) => form.platform === setting.platform,
+  );
+
+  console.log(inputSetting);
+
   function handleDelete(e) {
     e.preventDefault();
-
+    setForms((forms) => forms.filter((form) => form.id !== id));
     deleteLink(id);
   }
 
@@ -36,42 +41,46 @@ function LinkForm({ form, index }) {
 
   return (
     <li className="flex flex-col gap-3 rounded-xl bg-grey-light p-5">
-      <div className="flex justify-between">
-        <div className="flex gap-2">
-          <img src="icon-drag-and-drop.svg" alt="Drag and drop icon" />
-          <span className="font-bold text-grey">Link #{index + 1}</span>
+      <form>
+        <div className="flex justify-between">
+          <div className="flex gap-2">
+            <img src="icon-drag-and-drop.svg" alt="Drag and drop icon" />
+            <span className="font-bold text-grey">Link #{index + 1}</span>
+          </div>
+          <button
+            className="text-grey"
+            onClick={handleDelete}
+            disabled={isDeleting}
+          >
+            Remove
+          </button>
         </div>
-        <button
-          className="text-grey"
-          onClick={handleDelete}
-          disabled={isDeleting}
-        >
-          Remove
-        </button>
-      </div>
 
-      <Select
-        options={linkOptions}
-        label="Platform"
-        id={id}
-        selectedPlatform={platform}
-        disabled={isDeleting}
-      />
-      <Input
-        icon="icon-link.svg"
-        label="Link"
-        placeholder="e.g. https://www.github.com/johnappleseed"
-        name="link"
-        register={register}
-        validationSchema={{
-          onChange: (e) => {
-            handleInputChange(e);
-          },
-        }}
-        errors={errors}
-        disabled={isDeleting}
-        id={id}
-      />
+        <Select
+          options={linkOptions}
+          label="Platform"
+          id={id}
+          selectedPlatform={platform}
+          disabled={isDeleting}
+        />
+        <Input
+          icon="icon-link.svg"
+          label="Link"
+          placeholder={`e.g. ${inputSetting.placeholder}`}
+          name="link"
+          register={register}
+          validationSchema={{
+            onChange: (e) => {
+              handleInputChange(e);
+            },
+            required: "This field is required",
+            pattern: inputSetting.pattern,
+          }}
+          errors={errors}
+          disabled={isDeleting}
+          id={id}
+        />
+      </form>
     </li>
   );
 }

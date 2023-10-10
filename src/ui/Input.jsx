@@ -10,7 +10,6 @@ function Input({
   name,
   validationSchema,
   label,
-  id,
 }) {
   return (
     <div>

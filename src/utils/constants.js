@@ -70,3 +70,76 @@ export const linkOptions = [
     value: "stackoverflow",
   },
 ];
+
+export const inputSettings = [
+  {
+    platform: "github",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: /^https:\/\/github\.com\/$/i,
+  },
+  {
+    platform: "linkedin",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "twitter",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "frontendmentor",
+    placeholder: "https://www.frontendmentor.io/profile/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "youtube",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "facebook",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "twitch",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "devto",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "codewars",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "codepen",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "freecodecamp",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "gitlab",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "hashnode",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+  {
+    platform: "stackoverflow",
+    placeholder: "https://www.github.com/johnappleseed",
+    pattern: "",
+  },
+];
