@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Option from "./Option";
 import Dropdown from "./Dropdown";
 
-function Select({ options, label, selectedPlatform, id }) {
+function Select({
+  options,
+  label,
+  selectedPlatform,
+  setNewPlatform,
+  isStored,
+  form,
+  id,
+}) {
   const storedOption = options.find(
     (option) => option.value === selectedPlatform,
   );
@@ -10,6 +18,13 @@ function Select({ options, label, selectedPlatform, id }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(storedOption || options[0]);
   const close = () => setIsOpen(false);
+
+  useEffect(
+    function () {
+      setNewPlatform(selected.value);
+    },
+    [selected, setNewPlatform],
+  );
 
   function handleToggle(e) {
     e.stopPropagation();
@@ -50,6 +65,8 @@ function Select({ options, label, selectedPlatform, id }) {
               close={close}
               selected={selected}
               onSelected={setSelected}
+              isStored={isStored}
+              form={form}
               id={id}
             />
           ))}

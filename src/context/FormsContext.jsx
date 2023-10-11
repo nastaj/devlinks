@@ -5,6 +5,7 @@ const FormsContext = createContext();
 
 function FormsProvider({ children }) {
   const [forms, setForms] = useState();
+  const [formIsOpen, setFormIsOpen] = useState(false);
   const { links, isLoading: isLoadingLinks } = useLinks();
 
   useEffect(
@@ -15,7 +16,16 @@ function FormsProvider({ children }) {
   );
 
   return (
-    <FormsContext.Provider value={{ forms, setForms, links, isLoadingLinks }}>
+    <FormsContext.Provider
+      value={{
+        forms,
+        setForms,
+        formIsOpen,
+        setFormIsOpen,
+        links,
+        isLoadingLinks,
+      }}
+    >
       {children}
     </FormsContext.Provider>
   );

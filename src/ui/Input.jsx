@@ -10,6 +10,7 @@ function Input({
   name,
   validationSchema,
   label,
+  onBlur,
 }) {
   return (
     <div>

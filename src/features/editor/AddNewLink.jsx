@@ -3,19 +3,11 @@ import Button from "../../ui/Button";
 import { linkOptions } from "../../utils/constants";
 
 function AddNewLink() {
-  const { forms, setForms } = useForms();
+  const { forms, setForms, setFormIsOpen } = useForms();
 
   function handleAddForm(e) {
     e.preventDefault();
-
-    const newForm = {
-      id: Math.round(Math.random() * 1000),
-      platform: linkOptions[0].value,
-      link: "",
-      creating: true,
-    };
-
-    setForms((forms) => [...forms, newForm]);
+    setFormIsOpen(true);
   }
 
   return (
