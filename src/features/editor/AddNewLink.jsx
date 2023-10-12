@@ -1,13 +1,12 @@
 import { useForms } from "../../context/FormsContext";
 import Button from "../../ui/Button";
-import { linkOptions } from "../../utils/constants";
 
 function AddNewLink() {
-  const { forms, setForms, setFormIsOpen } = useForms();
+  const { setNewFormIsOpen } = useForms();
 
   function handleAddForm(e) {
     e.preventDefault();
-    setFormIsOpen(true);
+    setNewFormIsOpen(true);
   }
 
   return (

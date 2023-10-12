@@ -1,10 +1,11 @@
-import { useForm, useFormContext } from "react-hook-form";
 import { useForms } from "../../context/FormsContext";
-import Button from "../../ui/Button";
+
 import useAddUpdateLinks from "./useAddUpdateLinks";
 
-function SaveButton() {
-  const { forms = [], formIsOpen } = useForms();
+import Button from "../../ui/Button";
+
+function SaveButton({ errors, name }) {
+  const { forms = [], newFormIsOpen } = useForms();
 
   const { addUpdate, isUpdating } = useAddUpdateLinks();
 
@@ -16,7 +17,11 @@ function SaveButton() {
   if (!forms.length) return null;
 
   return (
-    <Button onClick={handleSubmit} disabled={isUpdating || formIsOpen}>
+    <Button
+      className="[&:not(:last-child)]:hidden"
+      onClick={handleSubmit}
+      disabled={isUpdating || newFormIsOpen || errors[name]}
+    >
       Save
     </Button>
   );

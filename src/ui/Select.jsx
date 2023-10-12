@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import Option from "./Option";
 import Dropdown from "./Dropdown";
 
@@ -14,7 +15,6 @@ function Select({
   const storedOption = options.find(
     (option) => option.value === selectedPlatform,
   );
-
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(storedOption || options[0]);
   const close = () => setIsOpen(false);

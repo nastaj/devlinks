@@ -5,7 +5,6 @@ function AppLayout() {
   return (
     <div className=" bg-grey-light">
       <Header />
-
       <main className="m-4 h-screen rounded-xl bg-white">
         <Outlet />
       </main>

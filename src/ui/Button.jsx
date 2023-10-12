@@ -1,4 +1,10 @@
-function Button({ variation = "primary", onClick, disabled, children }) {
+function Button({
+  variation = "primary",
+  onClick,
+  disabled,
+  children,
+  className,
+}) {
   const btnStyles = {
     primary: `bg-brand-purple text-white hover:bg-brand-purple--hover ${
       disabled ? "bg-brand-purple--hover" : ""
@@ -10,7 +16,7 @@ function Button({ variation = "primary", onClick, disabled, children }) {
 
   return (
     <button
-      className={`w-full rounded-lg px-6 py-3 font-bold transition-colors ${btnStyles[variation]}`}
+      className={`w-full rounded-lg px-6 py-3 font-bold transition-colors ${btnStyles[variation]} ${className}`}
       disabled={disabled}
       onClick={onClick}
     >

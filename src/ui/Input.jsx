@@ -1,5 +1,3 @@
-import { useForms } from "../context/FormsContext";
-
 function Input({
   icon,
   disabled = false,
@@ -10,7 +8,6 @@ function Input({
   name,
   validationSchema,
   label,
-  onBlur,
 }) {
   return (
     <div>

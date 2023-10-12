@@ -1,12 +1,12 @@
-import EmptyLinkList from "./EmptyLinkList";
-import LinkForm from "./LinkForm";
-
 import { useForms } from "../../context/FormsContext";
-import Spinner from "../../ui/Spinner";
 import { linkOptions } from "../../utils/constants";
 
+import EmptyLinkList from "./EmptyLinkList";
+import LinkForm from "./LinkForm";
+import Spinner from "../../ui/Spinner";
+
 function LinkList() {
-  const { isLoadingLinks, forms = [], formIsOpen } = useForms();
+  const { isLoadingLinks, forms = [], newFormIsOpen } = useForms();
 
   const newForm = {
     id: Math.round(Math.random() * 1000),
@@ -16,17 +16,15 @@ function LinkList() {
     isStored: false,
   };
 
-  console.log(forms);
-
   if (isLoadingLinks) return <Spinner />;
-  if (!forms.length && !formIsOpen) return <EmptyLinkList />;
+  if (!forms.length && !newFormIsOpen) return <EmptyLinkList />;
 
   return (
     <ul className="flex flex-col gap-6">
       {forms.map((form, index) => (
         <LinkForm key={form.id} form={form} index={index} />
       ))}
-      {formIsOpen && <LinkForm form={newForm} />}
+      {newFormIsOpen && <LinkForm form={newForm} />}
     </ul>
   );
 }
