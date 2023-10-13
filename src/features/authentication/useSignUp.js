@@ -10,7 +10,7 @@ export default function useSignUp() {
     mutationFn: signupApi,
     onSuccess: () => {
       toast.success("Account successfully created");
-      navigate("/login");
+      navigate("/editor");
     },
     onError: () => {
       toast.error("There was a problem creating new account. Try again");

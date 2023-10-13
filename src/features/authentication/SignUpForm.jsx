@@ -31,7 +31,7 @@ function SignUpForm() {
         label="Email address"
         register={register}
         validationSchema={{
-          required: "This field is required",
+          required: "Can't be empty",
           pattern: {
             value: /\S+@\S+\.\S+/,
             message: "Please provide a valid email address",
@@ -49,7 +49,7 @@ function SignUpForm() {
         type="password"
         register={register}
         validationSchema={{
-          required: "This field is required",
+          required: "Can't be empty",
           minLength: {
             value: 8,
             message: "Password is too short",
@@ -67,13 +67,13 @@ function SignUpForm() {
         type="password"
         register={register}
         validationSchema={{
-          required: "This field is required",
+          required: "Can't be empty",
           minLength: {
             value: 8,
             message: "Password is too short",
           },
           validate: (value) =>
-            value === getValues().password || "Passwords need to match",
+            value === getValues().password || "Please check again",
         }}
         required
         errors={errors}

@@ -8,6 +8,7 @@ function Input({
   name,
   validationSchema,
   label,
+  defaultValue,
 }) {
   return (
     <div>
@@ -24,12 +25,13 @@ function Input({
         )}
         <input
           type={type}
-          className={`w-full rounded-lg border border-borders bg-white p-3 pl-10 focus:outline-brand-purple focus:drop-shadow-3xl ${
+          className={`w-full rounded-lg border border-borders bg-white p-3  focus:outline-brand-purple focus:drop-shadow-3xl ${
             errors[name] ? "border-red text-red" : ""
-          }`}
+          } ${icon && "pl-10"}`}
           placeholder={placeholder}
           disabled={disabled}
           {...register(name, validationSchema)}
+          defaultValue={defaultValue}
         />
         {errors[name] && (
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-red">

@@ -1,14 +1,35 @@
+import useUser from "../features/authentication/useUser";
 import supabase from "./supabase";
 
 export async function signup({ email, password }) {
-  const { data, error } = await supabase.auth.signUp({
+  // 1. Create user
+  const { data: userData, userError } = await supabase.auth.signUp({
     email,
     password,
   });
 
-  if (error) return new Error(error.message);
+  if (userError) return new Error(userError.message);
 
-  return data;
+  // 2. Get user's ID
+  const { id: userId } = await getCurrentUser();
+
+  // 2. Create user's profile
+  const { data: profileData, profileError } = await supabase
+    .from("profiles")
+    .insert([
+      {
+        userId: userId,
+        firstName: "",
+        lastName: "",
+        email: email,
+        avatar: "",
+      },
+    ])
+    .select();
+
+  if (profileError) return new Error(profileError.message);
+
+  return { userData, profileData };
 }
 
 export async function login({ email, password }) {

@@ -104,10 +104,10 @@ function LinkForm({ form, index }) {
             register={register}
             validationSchema={{
               onBlur: (e) => onSubmit(e),
-              required: "This field is required",
+              required: "Can't be empty",
               pattern: {
                 value: inputSetting.pattern,
-                message: "Please provide a valid URL",
+                message: "Please check the URL",
               },
             }}
             errors={errors}

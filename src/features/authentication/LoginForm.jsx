@@ -3,6 +3,8 @@ import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
+import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 function LoginForm() {
   const {
@@ -12,6 +14,7 @@ function LoginForm() {
     reset,
   } = useForm();
   const { login, isLoading } = useLogin();
+  const queryClient = useQueryClient();
 
   function onSubmit(data) {
     login(data, {
@@ -20,6 +23,13 @@ function LoginForm() {
       },
     });
   }
+
+  useEffect(
+    function () {
+      queryClient.clear();
+    },
+    [queryClient],
+  );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
@@ -30,7 +40,7 @@ function LoginForm() {
         label="Email address"
         register={register}
         validationSchema={{
-          required: "This field is required",
+          required: "Can't be empty",
         }}
         required
         errors={errors}
@@ -44,7 +54,7 @@ function LoginForm() {
         type="password"
         register={register}
         validationSchema={{
-          required: "This field is required",
+          required: "Can't be empty",
         }}
         required
         errors={errors}
