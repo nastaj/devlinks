@@ -71,6 +71,93 @@ export const linkOptions = [
   },
 ];
 
+export const previewLinks = [
+  {
+    icon: "icon-github.svg",
+    label: "Github",
+    value: "github",
+    color: "bg-[#1A1A1A]",
+  },
+  {
+    icon: "icon-linkedin.svg",
+    label: "Linkedin",
+    value: "linkedin",
+    color: "bg-[#2D68FF]",
+  },
+  {
+    icon: "icon-twitter.svg",
+    label: "Twitter",
+    value: "twitter",
+    color: "bg-[#43B7E9]",
+  },
+  {
+    icon: "icon-frontend-mentor.svg",
+    label: "Frontend Mentor",
+    value: "frontendmentor",
+    color: "bg-[#FFFFFF]",
+  },
+  {
+    icon: "icon-youtube.svg",
+    label: "Youtube",
+    value: "youtube",
+    color: "bg-[#EE3939]",
+  },
+  {
+    icon: "icon-facebook.svg",
+    label: "Facebook",
+    value: "facebook",
+    color: "bg-[#2442AC]",
+  },
+  {
+    icon: "icon-twitch.svg",
+    label: "Twitch",
+    value: "twitch",
+    color: "bg-[#EE3FC8]",
+  },
+  {
+    icon: "icon-devto.svg",
+    label: "Dev.to",
+    value: "devto",
+    color: "bg-[#333333]",
+  },
+  {
+    icon: "icon-codewars.svg",
+    label: "Codewars",
+    value: "codewars",
+    color: "bg-[#8A1A50]",
+  },
+  {
+    icon: "icon-codepen.svg",
+    label: "Codepen",
+    value: "codepen",
+    color: "bg-[#1E1F26]",
+  },
+  {
+    icon: "icon-freecodecamp.svg",
+    label: "freeCodeCamp",
+    value: "freecodecamp",
+    color: "bg-[#302267]",
+  },
+  {
+    icon: "icon-gitlab.svg",
+    label: "GitLab",
+    value: "gitlab",
+    color: "bg-[#EB4925]",
+  },
+  {
+    icon: "icon-hashnode.svg",
+    label: "Hashnode",
+    value: "hashnode",
+    color: "bg-[#0330D1]",
+  },
+  {
+    icon: "icon-stack-overflow.svg",
+    label: "Stack Overflow",
+    value: "stackoverflow",
+    color: "bg-[#EC7100]",
+  },
+];
+
 export const inputSettings = [
   {
     platform: "github",
