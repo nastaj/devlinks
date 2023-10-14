@@ -34,7 +34,7 @@ function Input({
           defaultValue={defaultValue}
         />
         {errors[name] && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-red">
+          <span className="absolute -top-[1.2rem] right-0 text-xs text-red sm:right-3 sm:top-1/2 sm:-translate-y-1/2">
             {errors[name]?.message}
           </span>
         )}

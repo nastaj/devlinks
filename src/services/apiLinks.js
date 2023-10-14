@@ -1,15 +1,15 @@
 import { getCurrentUser } from "./apiAuth";
 import supabase from "./supabase";
 
-export async function getUserLinks() {
-  // 1. Get logged in user
-  const { id: userId } = await getCurrentUser();
+export async function getUserLinks(UrlUserId) {
+  // 1. Get logged in user OR user assigned to the userId present in the URL
+  const { id } = await getCurrentUser(UrlUserId);
 
-  // 2. Get logged in user's links
+  // 2. Get user's links
   const { data: links, error } = await supabase
     .from("links")
     .select("id,platform,link")
-    .eq("userId", userId);
+    .eq("userId", id);
 
   if (error) throw new Error(error.message);
 

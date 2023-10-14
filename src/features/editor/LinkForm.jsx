@@ -81,6 +81,7 @@ function LinkForm({ form, index }) {
               className="text-grey"
               onClick={handleDelete}
               disabled={isDeleting}
+              type="button"
             >
               Remove
             </button>

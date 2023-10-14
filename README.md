@@ -23,12 +23,12 @@ DONE:
 - Receive validations if the links form is submitted without a URL or with the wrong URL pattern for the platform
 - Add profile details like profile picture, first name, last name, and email
 - Receive validations if the profile details form is saved with no first or last name
+- Create, read, update, delete links and see previews in the mobile mockup
 - **Bonus**: Create an account and log in (add user authentication to the full-stack app)
 - **Bonus**: Save details to a database (build the project as a full-stack app)
 
 TO-DO:
 
-- Create, read, update, delete links and see previews in the mobile mockup
 - Drag and drop links to reorder them
 - Preview their devlinks profile and copy the link to their clipboard
 - View the optimal layout for the interface depending on their device's screen size

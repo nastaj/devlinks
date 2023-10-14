@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+
 function Button({
   variation = "primary",
+  type = "button",
   onClick,
   disabled,
   children,
-  className,
+  className = "",
 }) {
   const btnStyles = {
     primary: `bg-brand-purple text-white hover:bg-brand-purple--hover ${
@@ -14,15 +17,30 @@ function Button({
     }`,
   };
 
-  return (
-    <button
-      className={`w-full rounded-lg px-6 py-3 font-bold transition-colors ${btnStyles[variation]} ${className}`}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
+  if (type === "button" || type === "submit") {
+    return (
+      <button
+        className={`w-full rounded-lg px-6 py-3 font-bold transition-colors ${btnStyles[variation]} ${className}`}
+        disabled={disabled}
+        onClick={onClick}
+        type={type}
+      >
+        {children}
+      </button>
+    );
+  }
+
+  if (type === "link") {
+    return (
+      <Link
+        className={`inline-block w-full rounded-lg px-6 py-3 text-center font-bold transition-colors ${btnStyles[variation]} ${className}`}
+        disabled={disabled}
+        to="/editor"
+      >
+        {children}
+      </Link>
+    );
+  }
 }
 
 export default Button;

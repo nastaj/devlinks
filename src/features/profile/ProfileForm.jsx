@@ -96,7 +96,9 @@ function ProfileForm() {
       </div>
 
       <div className="border-t-2 py-4">
-        <Button disabled={isUpdating}>Save</Button>
+        <Button type="submit" disabled={isUpdating}>
+          Save
+        </Button>
       </div>
     </form>
   );

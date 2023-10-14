@@ -7,6 +7,10 @@
   @apply bg-brand-purple--light;
 }
 
+.active path {
+  fill: #633cff;
+}
+
 /* Properties such as background shorthand are unavailable in Tailwind. Easier to implement it directly through CSS */
 .spinner,
 .spinner--mini {

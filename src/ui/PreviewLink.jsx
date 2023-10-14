@@ -11,7 +11,9 @@ function PreviewLink({ form }) {
     <li>
       <a
         className={`flex justify-between rounded-lg p-4 ${color} ${
-          value === "frontendmentor" ? "text-grey-dark" : "text-white"
+          value === "frontendmentor"
+            ? "border border-borders text-grey-dark"
+            : "text-white"
         }`}
         href={link}
         target="_blank"
@@ -27,7 +29,11 @@ function PreviewLink({ form }) {
           />
           <span>{label}</span>
         </div>
-        <img src="icon-arrow-right.svg" alt="Right arrow icon" />
+        <img
+          className={`${value === "frontendmentor" ? "brightness-0" : ""}`}
+          src="icon-arrow-right.svg"
+          alt="Right arrow icon"
+        />
       </a>
     </li>
   );

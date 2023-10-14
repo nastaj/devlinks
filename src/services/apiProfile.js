@@ -1,15 +1,15 @@
 import { getCurrentUser } from "./apiAuth";
 import supabase, { supabaseUrl } from "./supabase";
 
-export async function getProfile() {
-  // 1. Get logged in user
-  const { id: userId } = await getCurrentUser();
+export async function getProfile(UrlUserId) {
+  // 1. Get logged in user OR user assigned to the userId present in the URL
+  const { id } = await getCurrentUser(UrlUserId);
 
-  // 2. Get logged in user's links
+  // 2. Get user's links
   const { data: profile, error } = await supabase
     .from("profiles")
     .select("firstName,lastName,email,avatar")
-    .eq("userId", userId)
+    .eq("userId", id)
     .single();
 
   if (error) throw new Error(error.message);

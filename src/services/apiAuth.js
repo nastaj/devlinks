@@ -43,9 +43,13 @@ export async function login({ email, password }) {
   return data;
 }
 
-export async function getCurrentUser() {
+export async function getCurrentUser(UrlUserId) {
   const { data: session } = await supabase.auth.getSession();
-  if (!session.session) return null;
+
+  // Editor page for some reason returns UrlUserId as a prefilled object with some unrelated properties. That's why it's impossible to condition it as !UrlUserId
+  // If there is no logged-in session in localStorage, OR user accesses the API through the preview page, just return the userId present in URL
+  if (!session.session || typeof UrlUserId === "string")
+    return { id: UrlUserId };
 
   const { data, error } = await supabase.auth.getUser();
 

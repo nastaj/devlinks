@@ -37,10 +37,6 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
-      {
-        path: "/preview",
-        element: <Preview />,
-      },
     ],
   },
   {
@@ -50,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/:userId",
+    element: <Preview />,
   },
 ]);
 
@@ -66,8 +66,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <FormsProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
         <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
         <Toaster
           position="top-center"
           gutter={12}

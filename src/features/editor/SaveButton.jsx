@@ -21,6 +21,7 @@ function SaveButton({ errors, name }) {
       className="[&:not(:last-child)]:hidden"
       onClick={handleSubmit}
       disabled={isUpdating || newFormIsOpen || errors[name]}
+      type="button"
     >
       Save
     </Button>
