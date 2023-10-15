@@ -60,7 +60,7 @@ function LoginForm() {
         errors={errors}
         disabled={isLoading}
       />
-      <Button disabled={isLoading}>
+      <Button disabled={isLoading} type="submit">
         {isLoading ? <SpinnerMini /> : "Login"}
       </Button>
     </form>
