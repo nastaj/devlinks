@@ -24,13 +24,13 @@ DONE:
 - Add profile details like profile picture, first name, last name, and email
 - Receive validations if the profile details form is saved with no first or last name
 - Create, read, update, delete links and see previews in the mobile mockup
+- Preview their devlinks profile and copy the link to their clipboard
 - **Bonus**: Create an account and log in (add user authentication to the full-stack app)
 - **Bonus**: Save details to a database (build the project as a full-stack app)
 
 TO-DO:
 
 - Drag and drop links to reorder them
-- Preview their devlinks profile and copy the link to their clipboard
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 

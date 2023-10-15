@@ -17,14 +17,16 @@ function SaveButton({ errors, name }) {
   if (!forms.length) return null;
 
   return (
-    <Button
-      className="[&:not(:last-child)]:hidden"
-      onClick={handleSubmit}
-      disabled={isUpdating || newFormIsOpen || errors[name]}
-      type="button"
-    >
-      Save
-    </Button>
+    <div className="md:flex md:justify-end md:border-t [&:not(:last-child)]:hidden">
+      <Button
+        className="md:mt-6 md:w-auto md:px-6"
+        onClick={handleSubmit}
+        disabled={isUpdating || newFormIsOpen || errors[name]}
+        type="button"
+      >
+        Save
+      </Button>
+    </div>
   );
 }
 

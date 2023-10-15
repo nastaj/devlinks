@@ -54,7 +54,7 @@ function LoginForm() {
         placeholder="Enter your password"
         icon="icon-password.svg"
         name="password"
-        label="Enter your password"
+        label="Password"
         type="password"
         register={register}
         validationSchema={{

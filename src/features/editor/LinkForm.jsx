@@ -68,8 +68,8 @@ function LinkForm({ form, index }) {
 
   return (
     <>
-      <li className="flex flex-col gap-3 rounded-xl bg-grey-light p-5">
-        <form>
+      <li className="rounded-xl bg-grey-light p-5">
+        <form className="flex flex-col gap-3">
           <div className="flex justify-between">
             <div className="flex gap-2">
               <img src="icon-drag-and-drop.svg" alt="Drag and drop icon" />

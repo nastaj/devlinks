@@ -3,9 +3,9 @@ import Header from "./Header";
 
 function AppLayout() {
   return (
-    <div className=" bg-grey-light">
+    <div className="min-h-screen bg-grey-light md:p-4">
       <Header />
-      <main className="m-4 h-screen rounded-xl bg-white">
+      <main className="m-4 rounded-xl bg-white md:m-0">
         <Outlet />
       </main>
     </div>

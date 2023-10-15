@@ -79,6 +79,9 @@ function SignUpForm() {
         errors={errors}
         disabled={isLoading}
       />
+      <span className="text-xs text-grey">
+        Password must contain at least 8 characters
+      </span>
       <Button type="submit">
         {isLoading ? <SpinnerMini /> : "Create new account"}
       </Button>

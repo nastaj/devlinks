@@ -33,24 +33,26 @@ function ProfileForm() {
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-      <div className="rounded-xl bg-grey-light p-5">
-        <p className="mb-4 text-grey">Profile picture</p>
-        <FileInput
-          label="+ Upload Image"
-          name="avatar"
-          accept="image/png, image/jpeg"
-          register={register}
-          validationSchema={{
-            required: avatar ? false : "Can't be empty",
-          }}
-          errors={errors}
-          disabled={isUpdating}
-          setFile={setAvatar}
-          file={avatar}
-        />
-        <p className="mt-6 text-xs text-grey">
-          Image must be below 1024x1024px. Use PNG or JPG format.
-        </p>
+      <div className="rounded-xl bg-grey-light p-5 md:flex md:items-center ">
+        <p className="mb-4 text-grey md:basis-1/2">Profile picture</p>
+        <div className="md:flex md:basis-3/5 md:items-center md:gap-6">
+          <FileInput
+            label="+ Upload Image"
+            name="avatar"
+            accept="image/png, image/jpeg"
+            register={register}
+            validationSchema={{
+              required: avatar ? false : "Can't be empty",
+            }}
+            errors={errors}
+            disabled={isUpdating}
+            setFile={setAvatar}
+            file={avatar}
+          />
+          <p className="mt-6 text-xs text-grey md:mt-0">
+            Image must be below 1024x1024px. Use PNG or JPG format.
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-3 rounded-xl bg-grey-light p-5">
@@ -65,6 +67,7 @@ function ProfileForm() {
           errors={errors}
           defaultValue={profile.firstName}
           disabled={isUpdating}
+          direction="horizontal"
         />
         <Input
           label="Last name*"
@@ -77,6 +80,7 @@ function ProfileForm() {
           errors={errors}
           defaultValue={profile.lastName}
           disabled={isUpdating}
+          direction="horizontal"
         />
         <Input
           label="Email"
@@ -92,10 +96,11 @@ function ProfileForm() {
           defaultValue={profile.email}
           errors={errors}
           disabled={isUpdating}
+          direction="horizontal"
         />
       </div>
 
-      <div className="border-t-2 py-4">
+      <div className="border-t-2 py-4 md:flex md:justify-end">
         <Button type="submit" disabled={isUpdating}>
           Save
         </Button>

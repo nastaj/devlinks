@@ -9,7 +9,7 @@ function Button({
   className = "",
 }) {
   const btnStyles = {
-    primary: `bg-brand-purple text-white hover:bg-brand-purple--hover ${
+    primary: `bg-brand-purple text-white hover:bg-brand-purple--hover md:w-auto md:px-8 ${
       disabled ? "bg-brand-purple--hover" : ""
     }`,
     secondary: `bg-white text-brand-purple border border-brand-purple hover:bg-brand-purple--light ${

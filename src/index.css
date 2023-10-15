@@ -7,6 +7,10 @@
   @apply bg-brand-purple--light;
 }
 
+.active span {
+  @apply text-brand-purple;
+}
+
 .active path {
   fill: #633cff;
 }
