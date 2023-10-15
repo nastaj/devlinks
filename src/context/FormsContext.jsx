@@ -1,11 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useLinks from "../features/editor/useLinks";
-import { useQueryClient } from "@tanstack/react-query";
 
 const FormsContext = createContext();
 
 function FormsProvider({ children }) {
-  const queryClient = useQueryClient();
   const [forms, setForms] = useState();
   const [newFormIsOpen, setNewFormIsOpen] = useState(false);
   const { links, isLoading: isLoadingLinks } = useLinks();
@@ -14,7 +12,7 @@ function FormsProvider({ children }) {
     function () {
       setForms(links);
     },
-    [links, queryClient],
+    [links],
   );
 
   return (

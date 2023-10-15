@@ -33,7 +33,6 @@ export async function addUpdateLinks(forms) {
   // Use Promise.all to await all async operations inside map
   const results = await Promise.all(
     forms.map(async (form) => {
-      console.log(form);
       // Adding
       if (form.isCreating) {
         const { error } = await supabase

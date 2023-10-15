@@ -8,6 +8,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useForms } from "../../context/FormsContext";
 
 function LoginForm() {
+  const queryClient = useQueryClient();
+
   const {
     handleSubmit,
     register,
@@ -16,7 +18,6 @@ function LoginForm() {
   } = useForm();
   const { login, isLoading } = useLogin();
   const { setForms } = useForms();
-  const queryClient = useQueryClient();
 
   function onSubmit(data) {
     login(data, {
