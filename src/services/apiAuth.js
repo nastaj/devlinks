@@ -1,5 +1,5 @@
-import useUser from "../features/authentication/useUser";
 import supabase from "./supabase";
+import { DEFAULT_UUID } from "../utils/constants";
 
 export async function signup({ email, password }) {
   // 1. Create user
@@ -47,6 +47,10 @@ export async function getCurrentUser(UrlUserId) {
   const { data: session } = await supabase.auth.getSession();
 
   // Editor page for some reason returns UrlUserId as a prefilled object with some unrelated properties. That's why it's impossible to condition it as !UrlUserId
+
+  if (!session.session && !(typeof UrlUserId === "string"))
+    return { id: DEFAULT_UUID };
+
   // If there is no logged-in session in localStorage, OR user accesses the API through the preview page, just return the userId present in URL
   if (!session.session || typeof UrlUserId === "string")
     return { id: UrlUserId };
@@ -56,4 +60,12 @@ export async function getCurrentUser(UrlUserId) {
   if (error) throw new Error(error.message);
 
   return data?.user;
+}
+
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) throw new Error(error.message);
+
+  return null;
 }

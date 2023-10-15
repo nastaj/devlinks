@@ -3,6 +3,7 @@ import supabase from "./supabase";
 
 export async function getUserLinks(UrlUserId) {
   // 1. Get logged in user OR user assigned to the userId present in the URL
+  // NOTE: userId defaults to the DEFAULT_UUID, which is an empty user in the DB. It's a fix for auth when the user is not logged in to prevent from spamming the console with unnecessary errors.
   const { id } = await getCurrentUser(UrlUserId);
 
   // 2. Get user's links

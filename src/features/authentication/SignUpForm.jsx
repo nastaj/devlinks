@@ -79,7 +79,9 @@ function SignUpForm() {
         errors={errors}
         disabled={isLoading}
       />
-      <Button>{isLoading ? <SpinnerMini /> : "Create new account"}</Button>
+      <Button type="submit">
+        {isLoading ? <SpinnerMini /> : "Create new account"}
+      </Button>
     </form>
   );
 }

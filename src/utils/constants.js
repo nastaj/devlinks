@@ -1,3 +1,5 @@
+export const DEFAULT_UUID = "ff706c21-c18c-47db-a3f0-7d39e1b21139";
+
 export const linkOptions = [
   {
     icon: "icon-github.svg",

@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useLinks from "../features/editor/useLinks";
-import useUser from "../features/authentication/useUser";
 import { useQueryClient } from "@tanstack/react-query";
 
 const FormsContext = createContext();
@@ -36,6 +35,7 @@ function FormsProvider({ children }) {
 
 function useForms() {
   const context = useContext(FormsContext);
+
   if (context === undefined)
     throw new Error("FormsContext was used outside of FormsProvider");
   return context;

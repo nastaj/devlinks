@@ -5,6 +5,7 @@ import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import { useForms } from "../../context/FormsContext";
 
 function LoginForm() {
   const {
@@ -14,6 +15,7 @@ function LoginForm() {
     reset,
   } = useForm();
   const { login, isLoading } = useLogin();
+  const { setForms } = useForms();
   const queryClient = useQueryClient();
 
   function onSubmit(data) {
@@ -26,9 +28,10 @@ function LoginForm() {
 
   useEffect(
     function () {
-      queryClient.clear();
+      queryClient.removeQueries();
+      setForms([]);
     },
-    [queryClient],
+    [queryClient, setForms],
   );
 
   return (
