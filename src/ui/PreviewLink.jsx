@@ -19,7 +19,7 @@ function PreviewLink({ form }) {
         target="_blank"
         rel="noreferrer"
       >
-        <div className="flex gap-2">
+        <div className="flex gap-2 xl:pr-28">
           <img
             className={`${
               value === "frontendmentor" ? "brightness-100" : "brightness-[10]"

@@ -9,11 +9,14 @@ function PreviewLinkList() {
   const { forms = [] } = useForms();
 
   return (
-    <ul className="flex flex-col gap-5 self-stretch">
+    <ul className="flex flex-col gap-5 self-stretch xl:gap-3">
       {forms.length > 0
         ? forms.map((form) => <PreviewLink key={form.id} form={form} />)
         : Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
-            <div className="rounded-lg bg-[#EEEEEE] p-4" key={i} />
+            <div
+              className="rounded-lg bg-[#EEEEEE] p-4 xl:p-6 xl:px-28"
+              key={i}
+            />
           ))}
     </ul>
   );

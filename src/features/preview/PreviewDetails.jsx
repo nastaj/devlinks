@@ -8,24 +8,22 @@ function PreviewDetails() {
   const { firstName, lastName, avatar, email } = profile;
   const fullName = `${firstName} ${lastName}`;
 
-  if (isLoading) return <Spinner />;
-
   return (
-    <div className="flex flex-col gap-[25px] self-stretch">
-      <figure className="flex justify-center">
+    <div className="flex flex-col gap-[25px] self-stretch xl:mb-2 xl:gap-0">
+      <figure className="flex justify-center xl:mb-5 xl:mt-2">
         {avatar ? (
           <img
             src={avatar}
             alt={`Avatar of ${fullName}`}
-            className="h-28 w-28 rounded-full border-4 border-brand-purple"
+            className="h-28 w-28 rounded-full border-4 border-brand-purple xl:h-[6.5rem] xl:w-[6.5rem]"
           />
         ) : (
-          <div className="h-28 w-28 rounded-full bg-[#EEEEEE]" />
+          <div className="h-28 w-28 rounded-full bg-[#EEEEEE] xl:h-[6.5rem] xl:w-[6.5rem]" />
         )}
       </figure>
       <div className="text-center">
         {firstName && lastName ? (
-          <h1 className="mb-2 text-[2rem] font-bold">{fullName}</h1>
+          <h1 className="mb-2 text-[2rem] font-bold xl:text-2xl">{fullName}</h1>
         ) : (
           <div className="mb-2 h-5 w-full rounded-xl bg-[#EEEEEE]" />
         )}

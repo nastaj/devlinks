@@ -20,6 +20,9 @@ export default {
       dropShadow: {
         "3xl": "0 5px 10px rgba(190, 173, 255, 0.6)",
       },
+      backgroundImage: {
+        "phone-mockup": "url('illustration-phone-mockup.svg')",
+      },
     },
   },
   plugins: [],
