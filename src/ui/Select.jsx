@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 
 import Option from "./Option";
 import Dropdown from "./Dropdown";
+import { updatePlatform } from "../services/apiLinks";
+import useUpdatePlatform from "../features/editor/useUpdatePlatform";
 
 function Select({
   options,
   label,
   selectedPlatform,
   setNewPlatform,
-  isStored,
   form,
   id,
 }) {
@@ -65,7 +66,6 @@ function Select({
               close={close}
               selected={selected}
               onSelected={setSelected}
-              isStored={isStored}
               form={form}
               id={id}
             />

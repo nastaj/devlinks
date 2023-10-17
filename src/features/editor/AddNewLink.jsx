@@ -1,12 +1,22 @@
-import { useForms } from "../../context/FormsContext";
 import Button from "../../ui/Button";
+import { linkOptions } from "../../utils/constants";
+import useUser from "../authentication/useUser";
+import useAddLink from "./useAddLink";
 
 function AddNewLink() {
-  const { setNewFormIsOpen } = useForms();
+  const { user } = useUser();
+  const { addLink, isAddingLink } = useAddLink();
 
-  function handleAddForm(e) {
+  function handleAddLink(e) {
     e.preventDefault();
-    setNewFormIsOpen(true);
+
+    const newLink = {
+      userId: user.id,
+      platform: linkOptions[0].value,
+      link: "",
+    };
+
+    addLink(newLink);
   }
 
   return (
@@ -16,7 +26,11 @@ function AddNewLink() {
         Add/edit/remove links below and then share all your profiles with the
         world!
       </p>
-      <Button variation="secondary" onClick={handleAddForm}>
+      <Button
+        variation="secondary"
+        onClick={handleAddLink}
+        disabled={isAddingLink}
+      >
         + Add new link
       </Button>
     </div>

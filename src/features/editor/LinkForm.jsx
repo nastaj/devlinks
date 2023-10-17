@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { inputSettings, linkOptions } from "../../utils/constants";
-import { useForms } from "../../context/FormsContext";
 
 import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import useDeleteLink from "./useDeleteLink";
 import SaveButton from "./SaveButton";
+import useUpdatePlatform from "./useUpdatePlatform";
 
-function LinkForm({ form, index }) {
-  const { id, platform, link, isCreating, isStored } = form;
-  const { setForms, setNewFormIsOpen } = useForms();
+function LinkForm({ form, index, formData, setFormData }) {
+  const { id, platform, link } = form;
+
   const [newPlatform, setNewPlatform] = useState(inputSettings[0].platform);
   const { deleteLink, isDeleting } = useDeleteLink();
+  const { isUpdatingPlatform } = useUpdatePlatform();
 
   const {
     register,
     formState: { errors },
   } = useForm({
-    mode: "all",
     defaultValues: {
       link: link,
     },
@@ -32,10 +32,6 @@ function LinkForm({ form, index }) {
   function handleDelete(e) {
     e.preventDefault();
 
-    // Creating
-    if (isCreating) setNewFormIsOpen(false);
-
-    setForms((forms) => forms.filter((form) => form.id !== id));
     deleteLink(id);
   }
 
@@ -45,25 +41,13 @@ function LinkForm({ form, index }) {
     const { value } = e.target;
     if (!value) return;
 
-    // Creating
-    if (isCreating && !isStored) {
-      const newForm = {
-        id,
-        platform: newPlatform,
-        link: value,
-        isCreating,
-        isStored: true,
-      };
-      setForms((forms) => [...forms, newForm]);
-      setNewFormIsOpen(false);
-    }
+    const newFormData = {
+      id,
+      link: value,
+      errors,
+    };
 
-    // Editing
-    if (!isCreating || isStored) {
-      setForms((forms) =>
-        forms.map((form) => (form.id === id ? { ...form, link: value } : form)),
-      );
-    }
+    console.log(formData);
   }
 
   return (
@@ -74,13 +58,13 @@ function LinkForm({ form, index }) {
             <div className="flex gap-2">
               <img src="icon-drag-and-drop.svg" alt="Drag and drop icon" />
               <span className="font-bold text-grey">
-                {!isCreating ? `Link #${index + 1}` : "New link"}
+                {`Link #${index + 1}`}
               </span>
             </div>
             <button
               className="text-grey"
               onClick={handleDelete}
-              disabled={isDeleting}
+              disabled={isDeleting || isUpdatingPlatform}
               type="button"
             >
               Remove
@@ -93,8 +77,7 @@ function LinkForm({ form, index }) {
             id={id}
             selectedPlatform={platform}
             setNewPlatform={setNewPlatform}
-            isStored={isStored}
-            disabled={isDeleting}
+            disabled={isDeleting || isUpdatingPlatform}
             form={form}
           />
           <Input
@@ -104,7 +87,7 @@ function LinkForm({ form, index }) {
             name="link"
             register={register}
             validationSchema={{
-              onBlur: (e) => onSubmit(e),
+              onChange: (e) => onSubmit(e),
               required: "Can't be empty",
               pattern: {
                 value: inputSetting.pattern,
@@ -117,8 +100,6 @@ function LinkForm({ form, index }) {
           />
         </form>
       </li>
-
-      <SaveButton name="link" errors={errors} />
     </>
   );
 }

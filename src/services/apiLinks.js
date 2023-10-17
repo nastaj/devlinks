@@ -17,6 +17,14 @@ export async function getUserLinks(UrlUserId) {
   return links;
 }
 
+export async function addLink(newLink) {
+  const { error } = await supabase.from("links").insert(newLink).select();
+
+  if (error) throw new Error(error.message);
+
+  return null;
+}
+
 export async function deleteLink(id) {
   const { error } = await supabase.from("links").delete().eq("id", id);
 
@@ -25,42 +33,55 @@ export async function deleteLink(id) {
   return null;
 }
 
-export async function addUpdateLinks(forms) {
-  // 1. Get logged in user
-  const { id: userId } = await getCurrentUser();
+export async function updatePlatform({ id, newPlatform }) {
+  const { data, error } = await supabase
+    .from("links")
+    .update({ platform: newPlatform })
+    .eq("id", id)
+    .select();
 
-  // 2. Determine if user updates or adds a new link
-  // Use Promise.all to await all async operations inside map
-  const results = await Promise.all(
-    forms.map(async (form) => {
-      // Adding
-      if (form.isCreating) {
-        const { error } = await supabase
-          .from("links")
-          .insert([
-            { userId: userId, platform: form.platform, link: form.link },
-          ])
-          .select();
+  if (error) throw new Error(error.message);
 
-        if (error) throw new Error(error.message);
-
-        return null;
-      }
-
-      // Updating
-      if (!form.isCreating) {
-        const { error } = await supabase
-          .from("links")
-          .update({ platform: form.platform, link: form.link })
-          .eq("id", form.id)
-          .select();
-
-        if (error) throw new Error(error.message);
-
-        return null;
-      }
-    }),
-  );
-
-  return results; // Return the results of all async operations
+  return data;
 }
+
+// OLD SOLUTION USING "FORMS" ARRAY
+// export async function addUpdateLinks(forms) {
+//   // 1. Get logged in user
+//   const { id: userId } = await getCurrentUser();
+
+//   // 2. Determine if user updates or adds a new link
+//   // Use Promise.all to await all async operations inside map
+//   const results = await Promise.all(
+//     forms.map(async (form) => {
+//       // Adding
+//       if (form.isCreating) {
+//         const { error } = await supabase
+//           .from("links")
+//           .insert([
+//             { userId: userId, platform: form.platform, link: form.link },
+//           ])
+//           .select();
+
+//         if (error) throw new Error(error.message);
+
+//         return null;
+//       }
+
+//       // Updating
+//       if (!form.isCreating) {
+//         const { error } = await supabase
+//           .from("links")
+//           .update({ platform: form.platform, link: form.link })
+//           .eq("id", form.id)
+//           .select();
+
+//         if (error) throw new Error(error.message);
+
+//         return null;
+//       }
+//     }),
+//   );
+
+//   return results; // Return the results of all async operations
+// }

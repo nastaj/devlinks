@@ -1,19 +1,14 @@
-import { useForms } from "../context/FormsContext";
+import useUpdatePlatform from "../features/editor/useUpdatePlatform";
 
-function Option({ option, close, onSelected, selected, isStored, id }) {
+function Option({ option, close, onSelected, selected, id }) {
+  const { updatePlatform } = useUpdatePlatform();
   const isSelected = option.value === selected.value;
-  const { setForms } = useForms();
 
   function handleClick() {
-    onSelected(option);
+    const newPlatform = option.value;
 
-    if (isStored) {
-      setForms((forms) =>
-        forms.map((form) =>
-          form.id === id ? { ...form, platform: option.value } : form,
-        ),
-      );
-    }
+    onSelected(option);
+    updatePlatform({ id, newPlatform });
 
     close();
   }

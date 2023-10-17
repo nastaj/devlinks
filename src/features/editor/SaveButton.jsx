@@ -1,27 +1,20 @@
 import { useForms } from "../../context/FormsContext";
 
-import useAddUpdateLinks from "./useAddUpdateLinks";
+import useAddUpdateLinks from "./useAddLink";
 
 import Button from "../../ui/Button";
+import useLinks from "./useLinks";
 
-function SaveButton({ errors, name }) {
-  const { forms = [], newFormIsOpen } = useForms();
-
-  const { addUpdate, isUpdating } = useAddUpdateLinks();
-
+function SaveButton() {
   function handleSubmit(e) {
     e.preventDefault();
-    addUpdate(forms);
   }
 
-  if (!forms.length) return null;
-
   return (
-    <div className="md:flex md:justify-end md:border-t [&:not(:last-child)]:hidden">
+    <div className="md:flex md:justify-end md:border-t">
       <Button
         className="md:mt-6 md:w-auto md:px-6"
         onClick={handleSubmit}
-        disabled={isUpdating || newFormIsOpen || errors[name]}
         type="button"
       >
         Save
