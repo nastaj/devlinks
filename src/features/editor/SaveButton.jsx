@@ -3,11 +3,12 @@ import { useForms } from "../../context/FormsContext";
 import Button from "../../ui/Button";
 import useUpdateLinks from "./useUpdateLinks";
 
-function SaveButton({ formData, hasError }) {
+function SaveButton({ formData, isValid, setIsValid }) {
   const { submitUpdate, isUpdating } = useUpdateLinks();
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsValid(false);
     submitUpdate(formData);
   }
 
@@ -17,7 +18,7 @@ function SaveButton({ formData, hasError }) {
         className="md:mt-6 md:w-auto md:px-6"
         onClick={handleSubmit}
         type="button"
-        disabled={isUpdating || hasError}
+        disabled={isUpdating || !isValid}
       >
         Save
       </Button>

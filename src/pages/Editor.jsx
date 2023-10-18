@@ -10,7 +10,7 @@ import SaveButton from "../features/editor/SaveButton";
 function Editor() {
   const { links, refetch } = useLinks();
   const [formData, setFormData] = useState([]);
-  const [hasError, setHasError] = useState(true);
+  const [isValid, setIsValid] = useState(false);
 
   useEffect(
     function () {
@@ -30,9 +30,13 @@ function Editor() {
       </div>
 
       <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:basis-[55%]">
-        <AddNewLink />
-        <LinkList setFormData={setFormData} setHasError={setHasError} />
-        <SaveButton formData={formData} hasError={hasError} />
+        <AddNewLink setIsValid={setIsValid} />
+        <LinkList setFormData={setFormData} setIsValid={setIsValid} />
+        <SaveButton
+          formData={formData}
+          isValid={isValid}
+          setIsValid={setIsValid}
+        />
       </div>
     </div>
   );

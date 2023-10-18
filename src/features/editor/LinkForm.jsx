@@ -8,7 +8,7 @@ import Select from "../../ui/Select";
 import useDeleteLink from "./useDeleteLink";
 import useUpdatePlatform from "./useUpdatePlatform";
 
-function LinkForm({ form, index, setFormData, setHasError }) {
+function LinkForm({ form, index, setFormData, setIsValid }) {
   const { id, platform, link } = form;
 
   const [newPlatform, setNewPlatform] = useState(inputSettings[0].platform);
@@ -41,11 +41,11 @@ function LinkForm({ form, index, setFormData, setHasError }) {
 
     if (!value || Object.keys(errors).length > 0) {
       console.log("Not submitted");
-      setHasError(true);
+      setIsValid(false);
       return;
     }
 
-    setHasError(false);
+    setIsValid(true);
     setFormData((formData) =>
       formData.map((data) =>
         data.id === id ? { ...data, link: value } : data,
@@ -56,7 +56,7 @@ function LinkForm({ form, index, setFormData, setHasError }) {
   return (
     <>
       <li className="rounded-xl bg-grey-light p-5">
-        <form className="flex flex-col gap-3">
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex justify-between">
             <div className="flex gap-2">
               <img src="icon-drag-and-drop.svg" alt="Drag and drop icon" />

@@ -3,7 +3,7 @@ import { linkOptions } from "../../utils/constants";
 import useUser from "../authentication/useUser";
 import useAddLink from "./useAddLink";
 
-function AddNewLink() {
+function AddNewLink({ setIsValid }) {
   const { user } = useUser();
   const { addLink, isAddingLink } = useAddLink();
 
@@ -16,6 +16,7 @@ function AddNewLink() {
       link: "",
     };
 
+    setIsValid(false);
     addLink(newLink);
   }
 
