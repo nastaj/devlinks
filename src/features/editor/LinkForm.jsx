@@ -6,10 +6,9 @@ import { inputSettings, linkOptions } from "../../utils/constants";
 import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import useDeleteLink from "./useDeleteLink";
-import SaveButton from "./SaveButton";
 import useUpdatePlatform from "./useUpdatePlatform";
 
-function LinkForm({ form, index, formData, setFormData }) {
+function LinkForm({ form, index, setFormData, setHasError }) {
   const { id, platform, link } = form;
 
   const [newPlatform, setNewPlatform] = useState(inputSettings[0].platform);
@@ -19,7 +18,9 @@ function LinkForm({ form, index, formData, setFormData }) {
   const {
     register,
     formState: { errors },
+    handleSubmit,
   } = useForm({
+    mode: "all",
     defaultValues: {
       link: link,
     },
@@ -36,18 +37,20 @@ function LinkForm({ form, index, formData, setFormData }) {
   }
 
   function onSubmit(e) {
-    e.preventDefault();
-
     const { value } = e.target;
-    if (!value) return;
 
-    const newFormData = {
-      id,
-      link: value,
-      errors,
-    };
+    if (!value || Object.keys(errors).length > 0) {
+      console.log("Not submitted");
+      setHasError(true);
+      return;
+    }
 
-    console.log(formData);
+    setHasError(false);
+    setFormData((formData) =>
+      formData.map((data) =>
+        data.id === id ? { ...data, link: value } : data,
+      ),
+    );
   }
 
   return (
@@ -88,6 +91,7 @@ function LinkForm({ form, index, formData, setFormData }) {
             register={register}
             validationSchema={{
               onChange: (e) => onSubmit(e),
+              onBlur: (e) => onSubmit(e),
               required: "Can't be empty",
               pattern: {
                 value: inputSetting.pattern,

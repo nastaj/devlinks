@@ -3,7 +3,7 @@ import LinkForm from "./LinkForm";
 import Spinner from "../../ui/Spinner";
 import useLinks from "./useLinks";
 
-function LinkList({ formData, setFormData }) {
+function LinkList({ setFormData, setHasError }) {
   const { links, isLoading } = useLinks();
 
   if (isLoading) return <Spinner />;
@@ -16,8 +16,8 @@ function LinkList({ formData, setFormData }) {
           key={form.id}
           form={form}
           index={index}
-          formData={formData}
           setFormData={setFormData}
+          setHasError={setHasError}
         />
       ))}
     </ul>

@@ -8,14 +8,16 @@ import PreviewLinkList from "../features/preview/PreviewLinkList";
 import SaveButton from "../features/editor/SaveButton";
 
 function Editor() {
-  const { refetch } = useLinks();
+  const { links, refetch } = useLinks();
   const [formData, setFormData] = useState([]);
+  const [hasError, setHasError] = useState(true);
 
   useEffect(
     function () {
       refetch();
+      setFormData(links);
     },
-    [refetch],
+    [refetch, links],
   );
 
   return (
@@ -29,8 +31,8 @@ function Editor() {
 
       <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:basis-[55%]">
         <AddNewLink />
-        <LinkList formData={formData} setFormData={setFormData} />
-        <SaveButton />
+        <LinkList setFormData={setFormData} setHasError={setHasError} />
+        <SaveButton formData={formData} hasError={hasError} />
       </div>
     </div>
   );

@@ -10,7 +10,8 @@ export async function getUserLinks(UrlUserId) {
   const { data: links, error } = await supabase
     .from("links")
     .select("id,platform,link")
-    .eq("userId", id);
+    .eq("userId", id)
+    .order("created_at");
 
   if (error) throw new Error(error.message);
 
@@ -43,6 +44,20 @@ export async function updatePlatform({ id, newPlatform }) {
   if (error) throw new Error(error.message);
 
   return data;
+}
+
+export async function updateLinks(formData) {
+  formData.map(async (form) => {
+    const { error } = await supabase
+      .from("links")
+      .update({ link: form.link })
+      .eq("id", form.id)
+      .select();
+
+    if (error) throw new Error(error.message);
+
+    return null;
+  });
 }
 
 // OLD SOLUTION USING "FORMS" ARRAY
