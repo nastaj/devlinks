@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+
 import LinkList from "../features/editor/LinkList";
 import AddNewLink from "../features/editor/AddNewLink";
 import useLinks from "../features/editor/useLinks";
-import { useEffect, useState } from "react";
 import PreviewLayout from "../features/preview/PreviewLayout";
 import PreviewDetails from "../features/preview/PreviewDetails";
 import PreviewLinkList from "../features/preview/PreviewLinkList";
@@ -22,7 +23,7 @@ function Editor() {
 
   return (
     <div className="h-full bg-grey-light xl:flex xl:justify-between xl:gap-6">
-      <div className="xl:basis-[45%]">
+      <div className="flex justify-center bg-white md:rounded-3xl xl:basis-[45%]">
         <PreviewLayout type="editor">
           <PreviewDetails />
           <PreviewLinkList />

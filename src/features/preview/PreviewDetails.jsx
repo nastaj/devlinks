@@ -9,7 +9,7 @@ function PreviewDetails() {
   const fullName = `${firstName} ${lastName}`;
 
   return (
-    <div className="flex flex-col gap-[25px] self-stretch xl:mb-2 xl:gap-0">
+    <div className="flex flex-col gap-[25px] xl:mb-2 xl:gap-0">
       <figure className="flex justify-center xl:mb-5 xl:mt-2">
         {avatar ? (
           <img

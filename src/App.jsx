@@ -5,15 +5,16 @@ import {
 } from "react-router-dom";
 
 import AppLayout from "./ui/AppLayout";
+import ProtectedRoute from "./ui/ProtectedRoute";
 import Editor from "./pages/Editor";
 import Profile from "./pages/Profile";
 import Preview from "./pages/Preview";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
-import ProtectedRoute from "./ui/ProtectedRoute";
 import { FormsProvider } from "./context/FormsContext";
 
 const router = createBrowserRouter([
@@ -67,7 +68,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <FormsProvider>
         <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         <Toaster
           position="top-center"
           gutter={12}

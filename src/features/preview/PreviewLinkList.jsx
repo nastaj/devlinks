@@ -10,7 +10,7 @@ function PreviewLinkList() {
   if (isLoadingLinks) return <Spinner />;
 
   return (
-    <ul className="flex flex-col gap-5 self-stretch xl:gap-3">
+    <ul className="flex flex-col gap-5 xl:gap-3">
       {links.length > 0
         ? links.map((form) => <PreviewLink key={form.id} form={form} />)
         : Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (

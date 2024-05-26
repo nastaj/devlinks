@@ -6,7 +6,7 @@ import ProfileForm from "../features/profile/ProfileForm";
 function Profile() {
   return (
     <div className="h-full bg-grey-light xl:flex xl:justify-between xl:gap-6">
-      <div className="xl:basis-[45%]">
+      <div className="flex justify-center bg-white md:rounded-3xl xl:basis-[45%]">
         <PreviewLayout type="editor">
           <PreviewDetails />
           <PreviewLinkList />

@@ -6,13 +6,11 @@ function PreviewLayout({ children, type = "preview" }) {
   };
 
   return (
-    <main
-      className={`flex flex-col items-center  bg-white md:rounded-3xl ${layout[type]} xl:h-full xl:bg-center xl:bg-no-repeat`}
+    <div
+      className={`${layout[type]} flex flex-col items-center justify-center gap-14 xl:h-full xl:w-1/2  xl:gap-6 xl:bg-contain xl:bg-center xl:bg-no-repeat`}
     >
-      <div className="flex flex-col items-center justify-center gap-14 xl:translate-y-[5rem] xl:gap-6 2xl:translate-y-[9.6rem] ">
-        {children}
-      </div>
-    </main>
+      {children}
+    </div>
   );
 }
 
