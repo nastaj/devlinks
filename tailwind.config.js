@@ -17,6 +17,9 @@ export default {
         borders: "#D9D9D9",
         red: "#FF3939",
       },
+      fontSize: {
+        "heading-m": ["2rem", "3rem"],
+      },
       dropShadow: {
         "3xl": "0 5px 10px rgba(190, 173, 255, 0.6)",
       },

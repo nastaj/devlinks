@@ -22,7 +22,7 @@ function Editor() {
   );
 
   return (
-    <div className="h-full bg-grey-light xl:flex xl:justify-between xl:gap-6">
+    <div className="h-full bg-red xl:flex xl:justify-between xl:gap-6">
       <div className="flex justify-center bg-white md:rounded-3xl xl:basis-[45%]">
         <PreviewLayout type="editor">
           <PreviewDetails />
@@ -33,11 +33,15 @@ function Editor() {
       <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:basis-[55%]">
         <AddNewLink setIsValid={setIsValid} />
         <LinkList setFormData={setFormData} setIsValid={setIsValid} />
-        <SaveButton
-          formData={formData}
-          isValid={isValid}
-          setIsValid={setIsValid}
-        />
+        {links.length && formData.length ? (
+          <SaveButton
+            formData={formData}
+            isValid={isValid}
+            setIsValid={setIsValid}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
