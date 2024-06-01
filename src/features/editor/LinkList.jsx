@@ -9,6 +9,8 @@ function LinkList({ setFormData, setIsValid }) {
   if (isLoading) return <Spinner />;
   if (!links.length) return <EmptyLinkList />;
 
+  console.log(links);
+
   return (
     <ul className="flex flex-col gap-6 overflow-y-auto">
       {links.map((form, index) => (

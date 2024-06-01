@@ -68,7 +68,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <FormsProvider>
         <RouterProvider router={router} />
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+        <ReactQueryDevtools initialIsOpen={false} />
         <Toaster
           position="top-center"
           gutter={12}

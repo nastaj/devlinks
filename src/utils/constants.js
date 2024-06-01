@@ -1,5 +1,7 @@
 export const DEFAULT_UUID = "ff706c21-c18c-47db-a3f0-7d39e1b21139";
 
+export const MAX_LINKS = 5;
+
 export const linkOptions = [
   {
     icon: "icon-github.svg",
@@ -163,7 +165,7 @@ export const previewLinks = [
 export const inputSettings = [
   {
     platform: "github",
-    placeholder: "https://www.github.com/johnappleseed",
+    placeholder: "https://github.com/johnappleseed",
     pattern: /^https:\/\/github\.com\//,
   },
   {

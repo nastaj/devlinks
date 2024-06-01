@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { inputSettings, linkOptions } from "../../utils/constants";
@@ -40,7 +40,6 @@ function LinkForm({ form, index, setFormData, setIsValid }) {
     const { value } = e.target;
 
     if (!value || Object.keys(errors).length > 0) {
-      console.log("Not submitted");
       setIsValid(false);
       return;
     }

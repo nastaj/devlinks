@@ -5,9 +5,9 @@ import ProfileForm from "../features/profile/ProfileForm";
 
 function Profile() {
   return (
-    <div className="h-full bg-red xl:flex xl:justify-between xl:gap-6">
-      <div className="flex justify-center bg-white md:rounded-3xl xl:basis-[45%]">
-        <PreviewLayout type="editor">
+    <div className="h-screen bg-grey-light xl:flex xl:justify-between xl:gap-6">
+      <div className="hidden justify-center bg-white md:rounded-3xl xl:flex xl:h-[85vh] xl:basis-[45%] xl:py-6">
+        <PreviewLayout page="editor">
           <PreviewDetails />
           <PreviewLinkList />
         </PreviewLayout>
@@ -16,7 +16,7 @@ function Profile() {
       <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:basis-[55%]">
         <div className="flex flex-col gap-10">
           <section>
-            <h1 className="text-heading-m mb-2 font-bold">Profile Details</h1>
+            <h1 className="mb-2 text-heading-m font-bold">Profile Details</h1>
             <p className="text-base text-grey">
               Add your details to create a personal touch to your profile.
             </p>

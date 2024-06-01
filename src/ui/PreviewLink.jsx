@@ -10,7 +10,7 @@ function PreviewLink({ form }) {
   return (
     <li>
       <a
-        className={`flex justify-between rounded-lg p-4 ${color} ${
+        className={`flex justify-between rounded-lg p-3 ${color} ${
           value === "frontendmentor"
             ? "border border-borders text-grey-dark"
             : "text-white"
@@ -19,7 +19,7 @@ function PreviewLink({ form }) {
         target="_blank"
         rel="noreferrer"
       >
-        <div className="flex gap-2 xl:pr-28">
+        <div className="flex gap-2">
           <img
             className={`${
               value === "frontendmentor" ? "brightness-100" : "brightness-[10]"

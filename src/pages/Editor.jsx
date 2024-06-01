@@ -22,18 +22,18 @@ function Editor() {
   );
 
   return (
-    <div className="h-full bg-red xl:flex xl:justify-between xl:gap-6">
-      <div className="flex justify-center bg-white md:rounded-3xl xl:basis-[45%]">
-        <PreviewLayout type="editor">
+    <div className="h-full xl:flex xl:justify-between xl:gap-6">
+      <div className="hidden justify-center bg-white md:rounded-3xl xl:flex xl:h-[85vh] xl:basis-[45%] xl:py-6">
+        <PreviewLayout page="editor">
           <PreviewDetails />
           <PreviewLinkList />
         </PreviewLayout>
       </div>
 
-      <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:basis-[55%]">
+      <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:h-[85vh] xl:basis-[55%]">
         <AddNewLink setIsValid={setIsValid} />
         <LinkList setFormData={setFormData} setIsValid={setIsValid} />
-        {links.length && formData.length ? (
+        {links?.length && formData?.length ? (
           <SaveButton
             formData={formData}
             isValid={isValid}
