@@ -1,9 +1,6 @@
 import { NavLink } from "react-router-dom";
-import useWindowSize from "../hooks/useWindowSize";
 
 function Tab({ type = "primary", to, userId }) {
-  const { windowSize } = useWindowSize();
-
   return (
     <NavLink
       to={to}

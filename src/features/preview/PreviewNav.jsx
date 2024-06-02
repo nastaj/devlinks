@@ -9,16 +9,17 @@ function PreviewNav() {
   const hasCreated = UrlUserId === user.id;
 
   return (
-    <nav className="mb-16 flex gap-4 p-4 md:justify-between">
-      {isAuthenticated && hasCreated && (
+    isAuthenticated &&
+    hasCreated && (
+      <nav className="mb-16 flex gap-4 p-4 md:justify-between">
         <>
           <Button variation="secondary" type="link" className="md:w-auto">
             Back to Editor
           </Button>
           <Button onClick={UrlToClipboard}>Share Link</Button>
         </>
-      )}
-    </nav>
+      </nav>
+    )
   );
 }
 

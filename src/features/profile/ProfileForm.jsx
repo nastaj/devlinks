@@ -34,7 +34,7 @@ function ProfileForm() {
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
       <div className="rounded-xl bg-grey-light p-5 md:flex md:items-center ">
-        <p className="mb-4 text-grey md:basis-1/2">Profile picture</p>
+        <p className="mb-4 text-grey md:basis-2/5">Profile picture</p>
         <div className="md:flex md:basis-3/5 md:items-center md:gap-6">
           <FileInput
             label="+ Upload Image"
