@@ -9,10 +9,9 @@ export async function getUserLinks(UrlUserId) {
   // 2. Get user's links
   const { data: links, error } = await supabase
     .from("links")
-    .select("id,platform,link")
+    .select("id,platform,link,order")
     .eq("userId", id)
-    .order("created_at");
-
+    .order("order");
   if (error) throw new Error(error.message);
 
   return links;
@@ -58,6 +57,22 @@ export async function updateLinks(formData) {
 
     return null;
   });
+}
+
+export async function updatePosition({ originalPos, newPos }) {
+  const { error } = await supabase
+    .from("links")
+    .update({ order: newPos.order })
+    .eq("id", originalPos.id);
+  if (error) throw new Error(error.message);
+
+  const { error2 } = await supabase
+    .from("links")
+    .update({ order: originalPos.order })
+    .eq("id", newPos.id);
+  if (error2) throw new Error(error2.message);
+
+  return null;
 }
 
 // OLD SOLUTION USING "FORMS" ARRAY

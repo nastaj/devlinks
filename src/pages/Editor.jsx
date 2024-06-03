@@ -32,7 +32,11 @@ function Editor() {
 
       <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 xl:h-[85vh] xl:basis-[55%]">
         <AddNewLink setIsValid={setIsValid} />
-        <LinkList setFormData={setFormData} setIsValid={setIsValid} />
+        <LinkList
+          formData={formData}
+          setFormData={setFormData}
+          setIsValid={setIsValid}
+        />
         {links?.length && formData?.length ? (
           <SaveButton
             formData={formData}

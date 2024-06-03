@@ -2,10 +2,12 @@ import Button from "../../ui/Button";
 import { linkOptions } from "../../utils/constants";
 import useUser from "../authentication/useUser";
 import useAddLink from "./useAddLink";
+import useLinks from "./useLinks";
 
 function AddNewLink({ setIsValid }) {
   const { user } = useUser();
   const { addLink, isAddingLink } = useAddLink();
+  const { links } = useLinks();
 
   function handleAddLink(e) {
     e.preventDefault();
@@ -14,6 +16,7 @@ function AddNewLink({ setIsValid }) {
       userId: user.id,
       platform: linkOptions[0].value,
       link: "",
+      order: links.length + 1,
     };
 
     setIsValid(false);

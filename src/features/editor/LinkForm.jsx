@@ -7,9 +7,19 @@ import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import useDeleteLink from "./useDeleteLink";
 import useUpdatePlatform from "./useUpdatePlatform";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 function LinkForm({ form, index, setFormData, setIsValid }) {
   const { id, platform, link } = form;
+
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
 
   const [newPlatform, setNewPlatform] = useState(inputSettings[0].platform);
   const { deleteLink, isDeleting } = useDeleteLink();
@@ -53,57 +63,62 @@ function LinkForm({ form, index, setFormData, setIsValid }) {
   }
 
   return (
-    <>
-      <li className="rounded-xl bg-grey-light p-5">
-        <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex justify-between">
-            <div className="flex gap-2">
-              <img src="icon-drag-and-drop.svg" alt="Drag and drop icon" />
-              <span className="font-bold text-grey">
-                {`Link #${index + 1}`}
-              </span>
-            </div>
-            <button
-              className="text-grey"
-              onClick={handleDelete}
-              disabled={isDeleting || isUpdatingPlatform}
-              type="button"
-            >
-              Remove
-            </button>
+    <li
+      ref={setNodeRef}
+      style={style}
+      className="touch-none rounded-xl bg-grey-light p-5"
+    >
+      <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex justify-between">
+          <div className="flex gap-2">
+            <img
+              {...attributes}
+              {...listeners}
+              src="icon-drag-and-drop.svg"
+              alt="Drag and drop icon"
+            />
+            <span className="font-bold text-grey">{`Link #${index + 1}`}</span>
           </div>
-
-          <Select
-            options={linkOptions}
-            label="Platform"
-            id={id}
-            selectedPlatform={platform}
-            setNewPlatform={setNewPlatform}
+          <button
+            className="text-grey"
+            onClick={handleDelete}
             disabled={isDeleting || isUpdatingPlatform}
-            form={form}
-          />
-          <Input
-            icon="icon-link.svg"
-            label="Link"
-            placeholder={`e.g. ${inputSetting.placeholder}`}
-            name="link"
-            register={register}
-            validationSchema={{
-              onChange: (e) => onSubmit(e),
-              onBlur: (e) => onSubmit(e),
-              required: "Can't be empty",
-              pattern: {
-                value: inputSetting.pattern,
-                message: "Please check the URL",
-              },
-            }}
-            errors={errors}
-            disabled={isDeleting}
-            id={id}
-          />
-        </form>
-      </li>
-    </>
+            type="button"
+          >
+            Remove
+          </button>
+        </div>
+
+        <Select
+          options={linkOptions}
+          label="Platform"
+          id={id}
+          selectedPlatform={platform}
+          setNewPlatform={setNewPlatform}
+          disabled={isDeleting || isUpdatingPlatform}
+          form={form}
+        />
+        <Input
+          icon="icon-link.svg"
+          label="Link"
+          placeholder={`e.g. ${inputSetting.placeholder}`}
+          name="link"
+          register={register}
+          validationSchema={{
+            onChange: (e) => onSubmit(e),
+            onBlur: (e) => onSubmit(e),
+            required: "Can't be empty",
+            pattern: {
+              value: inputSetting.pattern,
+              message: "Please check the URL",
+            },
+          }}
+          errors={errors}
+          disabled={isDeleting}
+          id={id}
+        />
+      </form>
+    </li>
   );
 }
 
