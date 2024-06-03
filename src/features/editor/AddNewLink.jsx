@@ -1,8 +1,9 @@
-import Button from "../../ui/Button";
-import { linkOptions } from "../../utils/constants";
+import { MAX_LINKS, linkOptions } from "../../utils/constants";
 import useUser from "../authentication/useUser";
 import useAddLink from "./useAddLink";
 import useLinks from "./useLinks";
+
+import Button from "../../ui/Button";
 
 function AddNewLink({ setIsValid }) {
   const { user } = useUser();
@@ -33,7 +34,7 @@ function AddNewLink({ setIsValid }) {
       <Button
         variation="secondary"
         onClick={handleAddLink}
-        disabled={isAddingLink}
+        disabled={isAddingLink || links?.length === MAX_LINKS}
       >
         + Add new link
       </Button>

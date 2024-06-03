@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import Button from "../../ui/Button";
-import { UrlToClipboard } from "../../utils/helpers";
 import useUser from "../authentication/useUser";
+import { UrlToClipboard } from "../../utils/helpers";
+
+import Button from "../../ui/Button";
 
 function PreviewNav() {
   const { userId: UrlUserId } = useParams();

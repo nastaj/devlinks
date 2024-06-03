@@ -1,7 +1,3 @@
-import EmptyLinkList from "./EmptyLinkList";
-import LinkForm from "./LinkForm";
-import Spinner from "../../ui/Spinner";
-import useLinks from "./useLinks";
 import {
   DndContext,
   KeyboardSensor,
@@ -16,11 +12,16 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import useUpdatePosition from "./useUpdatePosition";
 import {
   restrictToParentElement,
   restrictToVerticalAxis,
 } from "@dnd-kit/modifiers";
+import useUpdatePosition from "./useUpdatePosition";
+import EmptyLinkList from "./EmptyLinkList";
+import LinkForm from "./LinkForm";
+import useLinks from "./useLinks";
+
+import Spinner from "../../ui/Spinner";
 
 function LinkList({ setFormData, setIsValid }) {
   const { links, isLoading } = useLinks();

@@ -1,14 +1,12 @@
+import useUser from "../features/authentication/useUser";
+import useLogout from "../features/authentication/useLogout";
 import Nav from "./Nav";
 import Logo from "./Logo";
 import Tab from "./Tab";
-import useUser from "../features/authentication/useUser";
-import useLogout from "../features/authentication/useLogout";
-import Button from "./Button";
 import Logout from "./Logout";
 
 function Header() {
   const { user } = useUser();
-  const { logout } = useLogout();
 
   return (
     <header className="flex items-center justify-between bg-white p-4 md:mb-4 md:rounded-xl">

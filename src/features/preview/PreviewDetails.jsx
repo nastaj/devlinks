@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
-import Spinner from "../../ui/Spinner";
 import useProfile from "../profile/useProfile";
 
 function PreviewDetails() {
   const { userId: UrlUserId } = useParams();
-  const { profile = {}, isLoading } = useProfile(UrlUserId);
+  const { profile = {} } = useProfile(UrlUserId);
   const { firstName, lastName, avatar, email } = profile;
   const fullName = `${firstName} ${lastName}`;
 

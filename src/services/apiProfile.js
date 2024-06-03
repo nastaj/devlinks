@@ -1,5 +1,5 @@
-import { getCurrentUser } from "./apiAuth";
 import supabase, { supabaseUrl } from "./supabase";
+import { getCurrentUser } from "./apiAuth";
 
 export async function getProfile(UrlUserId) {
   // 1. Get logged in user OR user assigned to the userId present in the URL

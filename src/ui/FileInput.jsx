@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import useProfile from "../features/profile/useProfile";
-import Spinner from "./Spinner";
 
 function FileInput({
   label,

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import PreviewLink from "../../ui/PreviewLink";
 import useLinks from "../editor/useLinks";
+
+import PreviewLink from "../../ui/PreviewLink";
 import Spinner from "../../ui/Spinner";
 
 function PreviewLinkList({ page = "editor" }) {

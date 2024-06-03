@@ -1,11 +1,12 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useQueryClient } from "@tanstack/react-query";
+import { useLogin } from "./useLogin";
+import { useForms } from "../../context/FormsContext";
+
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
-import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
-import { useEffect } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { useForms } from "../../context/FormsContext";
 
 function LoginForm() {
   const queryClient = useQueryClient();
@@ -27,6 +28,7 @@ function LoginForm() {
     });
   }
 
+  // Reset all remote state
   useEffect(
     function () {
       queryClient.removeQueries();
@@ -44,7 +46,7 @@ function LoginForm() {
         label="Email address"
         register={register}
         validationSchema={{
-          required: "Can't be empty",
+          required: "Field required",
         }}
         required
         errors={errors}
@@ -58,7 +60,7 @@ function LoginForm() {
         type="password"
         register={register}
         validationSchema={{
-          required: "Can't be empty",
+          required: "Field required",
         }}
         required
         errors={errors}

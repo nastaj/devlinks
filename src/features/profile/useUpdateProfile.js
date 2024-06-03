@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateProfile as updateProfileApi } from "../../services/apiProfile";
 import toast from "react-hot-toast";
+import { updateProfile as updateProfileApi } from "../../services/apiProfile";
 
 export default function useUpdateProfile() {
   const queryClient = useQueryClient();

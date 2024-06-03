@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateLinks } from "../../services/apiLinks";
 import toast from "react-hot-toast";
+import { updateLinks } from "../../services/apiLinks";
 
 export default function useUpdateLinks() {
   const queryClient = useQueryClient();

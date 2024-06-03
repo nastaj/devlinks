@@ -1,5 +1,3 @@
-import useLogout from "../features/authentication/useLogout";
-import Button from "./Button";
 import Tab from "./Tab";
 
 function Nav() {

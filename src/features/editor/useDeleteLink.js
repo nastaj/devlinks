@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteLink as deleteLinkApi } from "../../services/apiLinks";
 import toast from "react-hot-toast";
+import { deleteLink as deleteLinkApi } from "../../services/apiLinks";
 
 export default function useDeleteLink() {
   const queryClient = useQueryClient();

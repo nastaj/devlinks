@@ -1,5 +1,5 @@
-import { getCurrentUser } from "./apiAuth";
 import supabase from "./supabase";
+import { getCurrentUser } from "./apiAuth";
 
 export async function getUserLinks(UrlUserId) {
   // 1. Get logged in user OR user assigned to the userId present in the URL

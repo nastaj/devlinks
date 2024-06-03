@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import useProfile from "./useProfile";
+import useUpdateProfile from "./useUpdateProfile";
+
+import Spinner from "../../ui/Spinner";
 import FileInput from "../../ui/FileInput";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
-import useProfile from "./useProfile";
-import Spinner from "../../ui/Spinner";
-import { useEffect, useState } from "react";
-import useUpdateProfile from "./useUpdateProfile";
 
 function ProfileForm() {
   const { profile = {}, isLoading } = useProfile();

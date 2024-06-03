@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 import useSignUp from "./useSignUp";
@@ -49,7 +50,7 @@ function SignUpForm() {
         type="password"
         register={register}
         validationSchema={{
-          required: "Can't be empty",
+          required: "Field required",
           minLength: {
             value: 8,
             message: "Password is too short",
@@ -67,7 +68,7 @@ function SignUpForm() {
         type="password"
         register={register}
         validationSchema={{
-          required: "Can't be empty",
+          required: "Field required",
           minLength: {
             value: 8,
             message: "Password is too short",

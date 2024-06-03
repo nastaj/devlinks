@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import useDeleteLink from "./useDeleteLink";
+import useUpdatePlatform from "./useUpdatePlatform";
 import { inputSettings, linkOptions } from "../../utils/constants";
 
 import Input from "../../ui/Input";
 import Select from "../../ui/Select";
-import useDeleteLink from "./useDeleteLink";
-import useUpdatePlatform from "./useUpdatePlatform";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 
 function LinkForm({ form, index, setFormData, setIsValid }) {
   const { id, platform, link } = form;
+  const [newPlatform, setNewPlatform] = useState(inputSettings[0].platform);
+  const { deleteLink, isDeleting } = useDeleteLink();
+  const { isUpdatingPlatform } = useUpdatePlatform();
 
+  // DND Hooks & Styles
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
@@ -21,9 +24,9 @@ function LinkForm({ form, index, setFormData, setIsValid }) {
     transform: CSS.Transform.toString(transform),
   };
 
-  const [newPlatform, setNewPlatform] = useState(inputSettings[0].platform);
-  const { deleteLink, isDeleting } = useDeleteLink();
-  const { isUpdatingPlatform } = useUpdatePlatform();
+  const inputSetting = inputSettings.find(
+    (setting) => newPlatform === setting.platform,
+  );
 
   const {
     register,
@@ -35,10 +38,6 @@ function LinkForm({ form, index, setFormData, setIsValid }) {
       link: link,
     },
   });
-
-  const inputSetting = inputSettings.find(
-    (setting) => newPlatform === setting.platform,
-  );
 
   function handleDelete(e) {
     e.preventDefault();
