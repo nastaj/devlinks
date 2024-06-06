@@ -70,7 +70,7 @@ function App() {
         <RouterProvider router={router} />
         <ReactQueryDevtools initialIsOpen={false} />
         <Toaster
-          position="top-center"
+          position="bottom-center"
           gutter={12}
           containerStyle={{ margin: "8px" }}
           toastOptions={{

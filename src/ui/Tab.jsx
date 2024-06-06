@@ -5,9 +5,8 @@ function Tab({ type = "primary", to, userId }) {
     <NavLink
       to={to}
       className={`flex rounded-lg px-6 py-2 ${
-        type === "secondary"
-          ? "border border-brand-purple px-[0.85rem] py-2"
-          : ""
+        type === "secondary" &&
+        "border border-brand-purple px-[0.85rem] py-2 transition-all hover:bg-brand-purple--light"
       }`}
     >
       <>

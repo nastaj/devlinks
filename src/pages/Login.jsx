@@ -5,7 +5,7 @@ import Logo from "../ui/Logo";
 
 function Login() {
   return (
-    <div className="md:flex md:h-screen md:flex-col md:items-center md:bg-grey-light">
+    <main className="md:flex md:h-screen md:flex-col md:items-center md:bg-grey-light">
       <Logo type="large" classname="pt-8 ml-8 md:p-0 md:m-0" />
       <div className="p-8 md:w-3/5 md:rounded-xl md:bg-white md:p-10 xl:w-1/3">
         <h1 className="mb-2 text-2xl font-bold">Login</h1>
@@ -21,7 +21,7 @@ function Login() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

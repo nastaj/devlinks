@@ -42,9 +42,6 @@ function ProfileForm() {
             name="avatar"
             accept="image/png, image/jpeg"
             register={register}
-            validationSchema={{
-              required: avatar ? false : "Can't be empty",
-            }}
             errors={errors}
             disabled={isUpdating}
             setFile={setAvatar}

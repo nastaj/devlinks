@@ -11,6 +11,7 @@ function Logo({ type = "small", classname }) {
 
   return (
     <img
+      alt="Devlinks logo"
       src={imageUrl}
       className={`${
         type === "large" ? "-mt-16 h-48 w-48" : "h-8 w-8"

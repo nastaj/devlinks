@@ -1,5 +1,4 @@
 import useUser from "../features/authentication/useUser";
-import useLogout from "../features/authentication/useLogout";
 import Nav from "./Nav";
 import Logo from "./Logo";
 import Tab from "./Tab";

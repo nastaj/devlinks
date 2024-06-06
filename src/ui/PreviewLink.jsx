@@ -1,6 +1,6 @@
 import { previewLinks } from "../utils/constants";
 
-function PreviewLink({ form }) {
+function PreviewLink({ form, page }) {
   const { platform, link } = form;
   const previewLink = previewLinks.find(
     (previewLink) => previewLink.value === platform,
@@ -14,7 +14,7 @@ function PreviewLink({ form }) {
           value === "frontendmentor"
             ? "border border-borders text-grey-dark"
             : "text-white"
-        }`}
+        } ${page === "preview" ? "w-48" : ""}`}
         href={link}
         target="_blank"
         rel="noreferrer"

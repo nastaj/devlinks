@@ -9,7 +9,7 @@ function Logout() {
       width="30"
       height="30"
       viewBox="0 0 512 512"
-      className="cursor-pointer"
+      className="cursor-pointer transition-all hover:scale-125 active:scale-100"
       onClick={logout}
     >
       <path

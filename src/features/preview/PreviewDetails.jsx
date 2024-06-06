@@ -6,7 +6,7 @@ function PreviewDetails() {
   const { profile = {} } = useProfile(UrlUserId);
   const { firstName, lastName, avatar, email } = profile;
   const fullName = `${firstName} ${lastName}`;
-
+  const initials = `${firstName?.[0]}${lastName?.[0]}`.toUpperCase();
   return (
     <div className="flex flex-col gap-[25px] xl:mb-2 xl:gap-0">
       <figure className="flex justify-center xl:mb-5 xl:mt-2">
@@ -17,7 +17,13 @@ function PreviewDetails() {
             className="h-28 w-28 rounded-full border-4 border-brand-purple xl:h-[6.5rem] xl:w-[6.5rem]"
           />
         ) : (
-          <div className="h-28 w-28 rounded-full bg-[#EEEEEE] xl:h-[6.5rem] xl:w-[6.5rem]" />
+          <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#EEEEEE] xl:h-[6.5rem] xl:w-[6.5rem]">
+            {firstName && lastName && (
+              <span className="text-2xl font-bold tracking-wide">
+                {initials}
+              </span>
+            )}
+          </div>
         )}
       </figure>
       <div className="text-center">
