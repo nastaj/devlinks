@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://your-solution-url.com)
-- Live Site URL: [Netlify](https://nastaj-devlinks.netlify.app/editor)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/devlinks-app-using-react-supabase-tailwind-and-mobilefirst-approach-xwk9TovYr3)
+- Live Site URL: [Netlify](https://nastaj-devlinks.netlify.app)
 
 ### Built with
 
